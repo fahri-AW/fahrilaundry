@@ -6,6 +6,7 @@
 /* Set mode dari TEMA.mode sebelum render (tanpa kedip). */
 (function () {
   var m = (window.TEMA && TEMA.mode) || 'terang';
+  try { m = localStorage.getItem('fahri-laundry-mode') || m; } catch (e) {}
   if (m === 'auto') m = matchMedia('(prefers-color-scheme: dark)').matches ? 'gelap' : 'terang';
   document.documentElement.setAttribute('data-mode', m);
 })();
@@ -15,8 +16,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Fahri Akbar Wiguna Laundry | Sistem Kasir</title>
 <meta name="description" content="Sistem kasir laundry Fahri Akbar Wiguna. Kelola order, pelanggan, pembayaran, status cucian, dan laporan.">
-<meta name="theme-color" content="#102d3a">
-<meta name="color-scheme" content="light">
+<meta name="theme-color" content="#6336a5">
+<meta name="color-scheme" content="light dark">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="ikon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="ikon.svg">
@@ -48,6 +49,7 @@
 </section>
 
 <div id="aplikasi" class="app" hidden>
+  <button type="button" id="btnTemaMode" class="tombol-mode" aria-label="Aktifkan mode gelap" title="Ganti mode tampilan"><svg class="ikon-mode-gelap" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.5 15.5A8.5 8.5 0 0 1 8.5 3.5 8.5 8.5 0 1 0 20.5 15.5Z"/></svg><svg class="ikon-mode-terang" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/></svg><span>Gelap</span></button>
   <nav class="samping" aria-label="Menu utama">
     <div class="merek"><img src="ikon.svg" width="34" height="34" alt=""><span data-tema-nama>Laundry</span></div>
     <button class="nav" data-hal="order"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></svg><span>Order</span></button>
