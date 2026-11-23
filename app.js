@@ -43,7 +43,7 @@
       layanan: layananBawaan(), paket: paketBawaan(),
       parfum: ['Lavender', 'Sakura', 'Ocean Fresh', 'Tanpa parfum'],
       pelanggan: [], order: [],
-      kasir: [{ id: 'k1', nama: 'Admin', pin: '1234', peran: 'admin' }, { id: 'k2', nama: 'Rina', pin: '1111', peran: 'kasir' }],
+      kasir: [{ id: 'k1', nama: 'Admin', pin: '1234', peran: 'admin' }],
       nomor: 0,
       sinkron: { url: '', kunci: '', otomatis: true, antrian: [], terakhir: null, galat: '' }
     };
@@ -85,6 +85,10 @@
     var k = dataKosong();
     ['layanan', 'paket', 'parfum', 'pelanggan', 'order', 'kasir', 'sinkron'].forEach(function (f) { if (!D[f]) D[f] = k[f]; });
     Object.keys(k.sinkron).forEach(function (f) { if (D.sinkron[f] === undefined) D.sinkron[f] = k.sinkron[f]; });
+    // Hapus akun kasir bawaan Rina dari data lama. Akun kasir lain yang dibuat pengguna tetap dipertahankan.
+    var jumlahKasirSebelum = D.kasir.length;
+    D.kasir = D.kasir.filter(function (akun) { return !(akun.id === 'k2' && akun.nama === 'Rina'); });
+    if (D.kasir.length !== jumlahKasirSebelum) simpan();
     if (D.toko.namaDariTema) D.toko.nama = NAMA_TEMA;
   }
   function simpan() {
