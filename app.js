@@ -89,6 +89,13 @@
     D.kasir = D.kasir.filter(function (akun) { return !(akun.id === 'k2' && akun.nama === 'Rina'); });
     if (!D.kasir.length) D.kasir = k.kasir.slice();
     if (D.kasir.length !== jumlahKasirSebelum) simpan();
+    // Migrasi satu kali: kosongkan daftar pelanggan tanpa mengubah riwayat order.
+    // Nama dan nomor pelanggan yang melekat pada transaksi lama tetap dipertahankan.
+    if (!D.migrasiDaftarPelangganKosongV1) {
+      D.pelanggan = [];
+      D.migrasiDaftarPelangganKosongV1 = true;
+      simpan();
+    }
     if (D.toko.namaDariTema) D.toko.nama = NAMA_TEMA;
   }
   function simpan() {
