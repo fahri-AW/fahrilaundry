@@ -62,7 +62,7 @@
         if (acak() < 0.25) items.push({ lid: ['l4', 'l5', 'l6', 'l7'][Math.floor(acak() * 4)], qty: 1 + Math.floor(acak() * 2) });
         if (acak() < 0.2) items[0].lid = 'l2';
         var pk = acak() < 0.65 ? 'reguler' : (acak() < 0.6 ? 'kilat' : 'express');
-        var o = buatOrder(d, { pelangganId: c.id, nama: c.nama, wa: c.wa, items: items, paket: pk, parfum: d.parfum[Math.floor(acak() * 3)], pisah: acak() < 0.3, catatan: acak() < 0.2 ? 'Jangan pakai pemutih' : '', tgl: t, kasir: acak() < 0.5 ? 'Admin' : 'Rina' });
+        var o = buatOrder(d, { pelangganId: c.id, nama: c.nama, wa: c.wa, items: items, paket: pk, parfum: d.parfum[Math.floor(acak() * 3)], pisah: acak() < 0.3, catatan: acak() < 0.2 ? 'Jangan pakai pemutih' : '', tgl: t, kasir: 'Admin' });
         var umur = hari * 24 + (now - t) / 36e5 % 24;
         var tahap = hari >= 4 ? 4 : hari === 3 ? 3 + Math.floor(acak() * 2) : hari === 2 ? 2 + Math.floor(acak() * 2) : hari === 1 ? 1 + Math.floor(acak() * 2) : Math.floor(acak() * 2);
         for (var s = 1; s <= tahap; s++) o.riwayat.push({ s: STATUS[s].id, t: new Date(t.getTime() + s * 6 * 36e5).toISOString(), oleh: o.kasir });
@@ -87,6 +87,7 @@
     // Hapus akun kasir bawaan Rina dari data lama. Akun kasir lain yang dibuat pengguna tetap dipertahankan.
     var jumlahKasirSebelum = D.kasir.length;
     D.kasir = D.kasir.filter(function (akun) { return !(akun.id === 'k2' && akun.nama === 'Rina'); });
+    if (!D.kasir.length) D.kasir = k.kasir.slice();
     if (D.kasir.length !== jumlahKasirSebelum) simpan();
     if (D.toko.namaDariTema) D.toko.nama = NAMA_TEMA;
   }
@@ -397,6 +398,47 @@
     var inp = $$('#itemOrder input[data-i]'); var idx = draf.items.indexOf(ada || draf.items[draf.items.length - 1]);
     if (inp[idx]) { inp[idx].focus(); inp[idx].select && inp[idx].select(); }
   }
+
+  // ---------- Input transaksi cepat dari teks ----------
+  function analisisTeksTransaksi(teks) {
+    var raw = String(teks || '').trim();
+    if (!raw) throw new Error('Masukkan teks transaksi.');
+    var nama = '', wa = '', catatan = '', layanan = null, qty = 0;
+    var nominal = 0;
+    var parts = raw.split(/[\n;,]+/).map(function (x) { return x.trim(); }).filter(Boolean);
+    parts.forEach(function (part) {
+      var mNama = part.match(/(?:nama|pelanggan)\s*[:=]\s*([^|]+)/i);
+      var mWa = part.match(/(?:wa|whatsapp|telp|telepon)\s*[:=]?\s*(08\d{8,13}|62\d{8,13})/i);
+      if (mNama) nama = mNama[1].trim();
+      if (mWa) wa = mWa[1].trim();
+      var mQty = part.match(/(\d+(?:[.,]\d+)?)\s*(kg|kilo|pcs|buah|m2|m²)\b/i);
+      var found = D.layanan.filter(function (l) { return part.toLowerCase().indexOf(l.nama.toLowerCase()) >= 0; })[0];
+      if (!found && /karpet/i.test(part)) found = D.layanan.filter(function(l){return l.tipe==='m2';})[0];
+      if (!found && /sepatu|jas|blazer|boneka|bed cover/i.test(part)) found = D.layanan.filter(function(l){return l.tipe==='pcs';})[0];
+      if (!found && /cuci|laundry|setrika|bahan/i.test(part)) found = D.layanan.filter(function(l){return l.tipe==='kg';})[0];
+      if (found) layanan = found;
+      if (mQty) qty = Number(mQty[1].replace(',', '.'));
+      var mPrice = part.match(/(?:harga|tarif|biaya)\s*[:=]?\s*(\d+(?:[.,]\d+)?)\s*(jt|juta|rb|ribu|k)?/i);
+      if (mPrice) nominal = Math.round(Number(mPrice[1].replace(',', '.')) * (/^(jt|juta)$/i.test(mPrice[2] || '') ? 1000000 : (mPrice[2] ? 1000 : 1)));
+      if (/catatan|note|noda|jangan/i.test(part)) catatan = part.replace(/^(catatan|note)\s*[:=]?\s*/i, '');
+    });
+    if (!layanan) throw new Error('Layanan belum dikenali. Contoh: Cuci Setrika 3 kg.');
+    if (!(qty > 0)) throw new Error('Jumlah atau berat belum ditemukan. Contoh: Cuci Setrika 3 kg.');
+    if (!nama) nama = 'Pelanggan baru';
+    return { nama:nama, wa:wa, layanan:layanan, qty:qty, harga:nominal || layanan.harga, catatan:catatan, raw:raw };
+  }
+  function isiOrderDariTeks(teks) {
+    var hasil = analisisTeksTransaksi(teks);
+    drafBaru();
+    $('#formOrder').nama.value = hasil.nama;
+    $('#formOrder').wa.value = hasil.wa;
+    draf.items = [{ lid:hasil.layanan.id, qty:hasil.qty }];
+    draf.catatanAI = hasil.catatan;
+    renderItemOrder();
+    if (hasil.catatan) $('#formOrder').catatan.value = hasil.catatan;
+    return hasil;
+  }
+
   function simpanOrder() {
     var f = $('#formOrder'), nama = f.nama.value.trim(), wa = f.wa.value.trim();
     if (!nama) { f.nama.focus(); toast('Isi nama pelanggan'); return; }
@@ -404,7 +446,7 @@
     if (!items.length) { toast('Isi berat / jumlah layanan'); return; }
     var c = D.pelanggan.filter(function (x) { return x.nama.toLowerCase() === nama.toLowerCase() && (!wa || waNomor(x.wa) === waNomor(wa) || !x.wa); })[0];
     if (!c) { c = { id: uid('c'), nama: nama, wa: wa }; D.pelanggan.push(c); } else if (wa && !c.wa) c.wa = wa;
-    var o = buatOrder(D, { pelangganId: c.id, nama: c.nama, wa: wa || c.wa, items: items, paket: draf.paket, estimasi: f.estimasi.value || null, parfum: f.parfum.value, pisah: f.pisah.checked, catatan: f.catatan.value.trim(), kasir: pengguna ? pengguna.nama : '' });
+    var o = buatOrder(D, { pelangganId: c.id, nama: c.nama, wa: wa || c.wa, items: items, paket: draf.paket, estimasi: f.estimasi.value || null, parfum: f.parfum.value, pisah: f.pisah.checked, catatan: [f.catatan.value.trim(), draf.catatanAI || ''].filter(Boolean).join(' | '), kasir: pengguna ? pengguna.nama : '' });
     var dp = Math.min(Number(draf.dp) || 0, o.total);
     if (dp > 0) o.bayar.push({ t: o.tgl, jml: dp, metode: draf.metode });
     D.order.push(o); antri(o.id); simpan();
@@ -643,6 +685,7 @@
     $('#cariOrder').oninput = renderPapan;
     $('#cariPelanggan').oninput = renderPelanggan;
     var fo = $('#formOrder');
+    $('#btnAnalisisTeks').onclick = function () { try { isiOrderDariTeks($('#inputTeksTransaksi').value); toast('Teks dikenali. Periksa data sebelum menyimpan.'); } catch (e) { toast(e.message || 'Teks tidak dikenali'); } };
     fo.addEventListener('input', function (e) {
       var t = e.target;
       if (t.dataset.i != null && draf.items[+t.dataset.i]) {
@@ -696,5 +739,5 @@
   if ('serviceWorker' in navigator && location.protocol !== 'file:' && !DEMO) navigator.serviceWorker.register('sw.js').catch(function () {});
 
   // Kait pengujian
-  window.__kasir = { data: function () { return D; }, hitungOrder: hitungOrder, buatOrder: buatOrder, ringkasan: ringkasan, majuStatus: majuStatus, sisa: sisa, linkWA: linkWA, teksNota: teksNota, waNomor: waNomor, ringkasOrder: ringkasOrder, kirim: kirim, tema: terapkanTema, buka: buka, demo: DEMO };
+  window.__kasir = { data: function () { return D; }, analisisTeksTransaksi: analisisTeksTransaksi, isiOrderDariTeks: isiOrderDariTeks, hitungOrder: hitungOrder, buatOrder: buatOrder, ringkasan: ringkasan, majuStatus: majuStatus, sisa: sisa, linkWA: linkWA, teksNota: teksNota, waNomor: waNomor, ringkasOrder: ringkasOrder, kirim: kirim, tema: terapkanTema, buka: buka, demo: DEMO };
 })();
