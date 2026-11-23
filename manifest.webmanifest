@@ -1,15 +1,20 @@
 {
-  "name": "Kasir Laundry",
-  "short_name": "Laundry",
-  "description": "Kasir laundry offline + sinkron Google Sheets opsional",
+  "name": "Fahri Akbar Wiguna Laundry",
+  "short_name": "Fahri Laundry",
+  "description": "Sistem kasir dan manajemen usaha Fahri Akbar Wiguna Laundry",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
   "orientation": "any",
-  "background_color": "#eef6f8",
-  "theme_color": "#0b6e80",
+  "background_color": "#f3f7fa",
+  "theme_color": "#102d3a",
   "lang": "id",
   "icons": [
-    { "src": "ikon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+    {
+      "src": "ikon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
   ]
 }
