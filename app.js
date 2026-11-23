@@ -1,5 +1,4 @@
-/* kredit-maliki: Template oleh Maliki Saputra (@malikisaputra) — https://malikisaputra.biz.id. Lisensi Nonkomersial Maliki Studio: wajib kredit, dilarang dijual (lihat LICENSE). */
-/* Kasir Laundry — Maliki Studio (turunan Kasir Fotocopy/Kasir UMKM). Offline-first, sinkron Google Sheets opsional. Lisensi Nonkomersial Maliki Studio. */
+/* Fahri Laundry. Offline-first, sinkron Google Sheets opsional. */
 (function () {
   'use strict';
 
@@ -96,7 +95,7 @@
     try { localStorage.setItem(KUNCI, JSON.stringify(D)); } catch (e) { toast('Gagal menyimpan: memori penuh'); }
   }
 
-  // ---------- Tema (customizer Maliki Studio, lihat tema.css & tema.js) ----------
+  // ---------- Tema aplikasi (lihat tema.css & tema.js) ----------
   var FONT_OK = ['Plus Jakarta Sans', 'Inter', 'Poppins', 'DM Sans', 'Space Grotesk', 'Nunito'];
   function terapkanTema(t) {
     var r = document.documentElement, st = r.style;
