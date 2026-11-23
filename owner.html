@@ -35,6 +35,22 @@
   .tabel-owner th{color:var(--redup);font-size:12.5px;background:var(--latar);border:0}
   .tabel-owner td:last-child,.tabel-owner th:last-child{text-align:right}
   @media (max-width:760px){.status-st{grid-template-columns:repeat(3,1fr)}}
+
+/* Owner dashboard refresh */
+.owner { max-width:1280px;padding:30px clamp(16px,3vw,40px) 48px; }
+.owner-kepala { padding:18px 21px;background:var(--nav);color:#fff;border-radius:20px;box-shadow:0 12px 28px rgba(16,45,58,.13);margin-bottom:20px; }
+.owner-kepala .merek span { color:#fff;font-weight:900; }
+.owner-kepala .redup { color:#c6d9df; }
+.owner .form { margin-bottom:20px; }
+.owner #isi { display:grid;gap:18px; }
+.owner #isi>.dua-kolom { margin:0; }
+.owner .status-st div { background:#f0f6f7;border:1px solid #e1ecef;border-radius:14px; }
+.owner .status-st b { color:#087f8c;font-size:28px; }
+.owner .tabel-owner th { padding:13px 12px; }
+.owner .tabel-owner td { padding:12px; }
+.owner .panel { border-radius:20px; }
+@media(max-width:760px) { .owner{padding:16px 12px 30px}.owner-kepala{padding:15px;border-radius:16px}.owner .status-st{grid-template-columns:repeat(2,1fr)} }
+
 </style>
 </head>
 <body>
