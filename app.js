@@ -98,6 +98,20 @@
     }
     if (D.toko.namaDariTema) D.toko.nama = NAMA_TEMA;
   }
+  function aturMode(mode) {
+    var m = mode === 'gelap' ? 'gelap' : 'terang';
+    document.documentElement.setAttribute('data-mode', m);
+    try { localStorage.setItem('fahri-laundry-mode', m); } catch (e) {}
+    var tombol = document.getElementById('btnTemaMode');
+    if (tombol) {
+      tombol.setAttribute('aria-label', m === 'gelap' ? 'Aktifkan mode terang' : 'Aktifkan mode gelap');
+      tombol.setAttribute('title', m === 'gelap' ? 'Aktifkan mode terang' : 'Aktifkan mode gelap');
+      tombol.querySelector('span').textContent = m === 'gelap' ? 'Terang' : 'Gelap';
+    }
+    var meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.setAttribute('content', m === 'gelap' ? '#10131d' : '#6336a5');
+    hitungTeksBagian();
+  }
   function simpan() {
     if (DEMO) return;
     try { localStorage.setItem(KUNCI, JSON.stringify(D)); } catch (e) { toast('Gagal menyimpan: memori penuh'); }
@@ -719,6 +733,13 @@
       else if (t.id === 'selMetode') draf.metode = t.value;
     });
     fo.addEventListener('submit', function (e) { e.preventDefault(); simpanOrder(); });
+    var btnTemaMode = $('#btnTemaMode');
+    if (btnTemaMode) {
+      aturMode(document.documentElement.getAttribute('data-mode') || 'terang');
+      btnTemaMode.onclick = function () {
+        aturMode(document.documentElement.getAttribute('data-mode') === 'gelap' ? 'terang' : 'gelap');
+      };
+    }
     $('#blnLaporan').onchange = renderLaporan;
     $('#btnEksporCSV').onclick = eksporCSV;
     $('#formToko').onsubmit = function (e) { e.preventDefault(); var f = e.target; ['nama', 'alamat', 'telp', 'footer'].forEach(function (k) { D.toko[k] = f[k].value.trim(); }); D.toko.namaDariTema = false; simpan(); $$('[data-tema-nama]').forEach(function (x) { x.textContent = D.toko.nama; }); toast('Profil disimpan'); };
