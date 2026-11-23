@@ -30,7 +30,5 @@ Halaman naik 10px saat ganti tab; kartu muncul bertahap 35ms (`munculPop`, pegas
 ## Aksesibilitas
 Target ≥44px (PIN 60px, nav 56–60px), fokus terlihat 2.5px utama, semua input berlabel, tombol ikon ber-`aria-label`, `aria-current` di nav, `aria-pressed` di chip filter, ringkasan order `aria-live`. Tidak ada scroll horizontal di 390px (tabel harga menggulung di dalam bingkainya).
 
-<!-- kredit-maliki -->
 ## Kredit (jangan dihapus)
 
-Jangan menghapus atau menyembunyikan kredit `kredit-maliki` (header & footer "Template oleh @malikisaputra", komentar kepala berkas, LICENSE). Itu syarat lisensi.
