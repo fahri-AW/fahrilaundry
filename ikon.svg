@@ -1,37 +1,26 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
-  <title id="title">Fahri Akbar Wiguna Laundry</title>
-  <desc id="desc">Ikon mesin cuci modern dengan gelombang air dan kilau.</desc>
+  <title id="title">Fahri Laundry</title>
+  <desc id="desc">Logo mesin cuci modern dengan gelombang air dan kilau dalam gradasi ungu.</desc>
   <defs>
-    <linearGradient id="bg" x1="12" y1="8" x2="116" y2="122" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#173f53"/><stop offset="1" stop-color="#0b2534"/>
-    </linearGradient>
-    <linearGradient id="body" x1="32" y1="22" x2="96" y2="110" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#fff"/><stop offset="1" stop-color="#dceff2"/>
-    </linearGradient>
-    <linearGradient id="water" x1="42" y1="56" x2="88" y2="101" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#75ead5"/><stop offset="1" stop-color="#0797a5"/>
-    </linearGradient>
-    <linearGradient id="shine" x1="37" y1="20" x2="90" y2="45" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#69e3d0"/><stop offset="1" stop-color="#11a9b4"/>
-    </linearGradient>
-    <filter id="shadow" x="15" y="12" width="98" height="108" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse">
-      <feGaussianBlur stdDeviation="5"/>
-    </filter>
+    <linearGradient id="bg" x1="12" y1="8" x2="116" y2="122" gradientUnits="userSpaceOnUse"><stop stop-color="#9B75E8"/><stop offset=".52" stop-color="#7045BD"/><stop offset="1" stop-color="#452477"/></linearGradient>
+    <linearGradient id="machine" x1="32" y1="18" x2="94" y2="111" gradientUnits="userSpaceOnUse"><stop stop-color="#fff"/><stop offset="1" stop-color="#E8DDFB"/></linearGradient>
+    <linearGradient id="glass" x1="42" y1="49" x2="87" y2="97" gradientUnits="userSpaceOnUse"><stop stop-color="#D9C7FF"/><stop offset=".55" stop-color="#9569DD"/><stop offset="1" stop-color="#58339B"/></linearGradient>
+    <linearGradient id="wave" x1="43" y1="70" x2="86" y2="87" gradientUnits="userSpaceOnUse"><stop stop-color="#fff"/><stop offset="1" stop-color="#D9C7FF"/></linearGradient>
+    <filter id="shadow" x="15" y="12" width="98" height="108" color-interpolation-filters="sRGB" filterUnits="userSpaceOnUse"><feGaussianBlur stdDeviation="4"/></filter>
   </defs>
-  <rect x="5" y="5" width="118" height="118" rx="31" fill="url(#bg)"/>
-  <circle cx="64" cy="65" r="48" fill="#12b8b2" opacity=".12"/>
-  <path d="M29 31c0-7 5-12 12-12h46c7 0 12 5 12 12v66c0 7-5 12-12 12H41c-7 0-12-5-12-12V31Z" fill="#031b29" opacity=".3" filter="url(#shadow)"/>
-  <rect x="28" y="18" width="72" height="92" rx="16" fill="url(#body)"/>
-  <path d="M28 34V31c0-7 5-13 13-13h46c7 0 13 6 13 13v8H28v-5Z" fill="url(#shine)"/>
-  <circle cx="41" cy="29" r="3" fill="#eafffb"/>
-  <circle cx="51" cy="29" r="3" fill="#d1fff7" opacity=".75"/>
-  <rect x="76" y="25" width="15" height="7" rx="3.5" fill="#e8fffb" opacity=".8"/>
-  <circle cx="64" cy="72" r="28" fill="#0b3344"/>
-  <circle cx="64" cy="72" r="23" fill="url(#water)"/>
-  <path d="M43 73c7-7 14-7 21 0s14 7 21 0v6c-7 7-14 7-21 0s-14-7-21 0v-6Z" fill="#f3fffc" opacity=".95"/>
-  <path d="M48 88c5-4 10-4 16 0s11 4 16 0" fill="none" stroke="#d8fff7" stroke-width="2.5" stroke-linecap="round" opacity=".9"/>
-  <circle cx="78" cy="55" r="3" fill="#eafffb"/>
-  <path d="M103 44l3.3 7.7L114 55l-7.7 3.3L103 66l-3.3-7.7L92 55l7.7-3.3L103 44Z" fill="#74ead5"/>
-  <path d="M20 76l2.2 5.2 5.3 2.2-5.3 2.2L20 91l-2.2-5.4-5.3-2.2 5.3-2.2L20 76Z" fill="#42cfc2" opacity=".9"/>
-  <path d="M42 116h44" stroke="#54d8c6" stroke-width="3" stroke-linecap="round" opacity=".8"/>
+  <rect x="4" y="4" width="120" height="120" rx="34" fill="url(#bg)"/>
+  <circle cx="64" cy="65" r="49" fill="#fff" opacity=".08"/>
+  <path d="M29 31c0-7 5-12 12-12h46c7 0 12 5 12 12v66c0 7-5 12-12 12H41c-7 0-12-5-12-12V31Z" fill="#27134C" opacity=".28" filter="url(#shadow)"/>
+  <rect x="28" y="17" width="72" height="94" rx="17" fill="url(#machine)"/>
+  <path d="M28 34V32c0-8 6-15 14-15h44c8 0 14 7 14 15v8H28v-6Z" fill="#F3ECFF"/>
+  <circle cx="41" cy="29" r="3" fill="#8D62D2"/><circle cx="51" cy="29" r="3" fill="#B59AE8"/>
+  <rect x="76" y="25" width="15" height="7" rx="3.5" fill="#C6B1ED"/>
+  <circle cx="64" cy="73" r="29" fill="#452477"/>
+  <circle cx="64" cy="73" r="24" fill="url(#glass)"/>
+  <path d="M42 70c7-7 14-7 22 0s15 7 22 0v8c-7 7-14 7-22 0s-15-7-22 0v-8Z" fill="url(#wave)"/>
+  <path d="M49 88c5-4 10-4 15 0s10 4 15 0" fill="none" stroke="#F6F0FF" stroke-width="2.5" stroke-linecap="round" opacity=".9"/>
+  <circle cx="79" cy="54" r="3" fill="#fff"/>
+  <path d="M105 39l4 9 9 4-9 4-4 9-4-9-9-4 9-4 4-9Z" fill="#F6EFFF"/>
+  <path d="M18 78l2.5 5.5L26 86l-5.5 2.5L18 94l-2.5-5.5L10 86l5.5-2.5L18 78Z" fill="#D9C7FF"/>
+  <path d="M43 117h42" stroke="#E7D9FF" stroke-width="3" stroke-linecap="round" opacity=".8"/>
 </svg>
