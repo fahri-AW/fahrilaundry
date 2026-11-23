@@ -364,3 +364,87 @@ html.mode-pilih [data-pilih-hover]{outline:2px solid #f43f5e!important;outline-o
   letter-spacing: .04em; pointer-events: none; backdrop-filter: blur(8px);
 }
 @media(max-width:760px){ .watermark-fahri{bottom:68px;right:8px;font-size:9px} }
+
+
+/* ============================================================
+   FAHRI AKBAR WIGUNA LAUNDRY — Dashboard refresh
+   UI polish only. Existing IDs, forms, and app logic are intact.
+   ============================================================ */
+:root {
+  --tema-utama: #087f8c;
+  --tema-aksen: #65dbc5;
+  --tema-radius: 18px;
+  --tema-font: "Plus Jakarta Sans", "Nunito", system-ui, sans-serif;
+  --tema-latar: #f3f7fa;
+  --tema-panel: #ffffff;
+  --tema-nav: #102d3a;
+  --tema-teks: #183541;
+}
+body { letter-spacing: -.01em; }
+.app { grid-template-columns: 248px minmax(0,1fr); background:var(--latar); }
+.samping {
+  width:248px; padding:24px 16px; gap:7px; align-items:stretch;
+  box-shadow: 10px 0 34px rgba(16,45,58,.09);
+  border-right:1px solid rgba(255,255,255,.07);
+}
+.samping .merek { flex-direction:row; justify-content:flex-start; gap:11px; padding:4px 10px 24px; margin-bottom:10px; }
+.samping .merek img { width:42px;height:42px;border-radius:14px;box-shadow:0 7px 18px rgba(0,0,0,.18); }
+.samping .merek span { font-size:15px;font-weight:900;line-height:1.25;max-width:145px; }
+.samping .nav {
+  justify-content:flex-start; flex-direction:row; gap:13px; width:100%;
+  min-height:48px; padding:0 14px; border-radius:13px; font-size:14px;
+  color:var(--nav-redup); transition:background .2s,color .2s,transform .2s;
+}
+.samping .nav svg { width:19px;height:19px; }
+.samping .nav:hover { color:#fff;background:rgba(255,255,255,.08);transform:translateX(2px); }
+.samping .nav.aktif { color:#fff;background:linear-gradient(105deg,#087f8c,#0e9b9a);box-shadow:0 8px 20px rgba(8,127,140,.25); }
+.samping .sinkron-chip { margin:16px 5px 8px;justify-content:center; }
+.samping .pengguna { margin-top:auto;padding:14px 7px 4px;border-top:1px solid var(--nav-garis);gap:9px; }
+.samping #namaKasir { flex:1;min-width:0;font-size:13px;font-weight:800;overflow:hidden;text-overflow:ellipsis; }
+main { max-width:1600px;width:100%;margin:0 auto;padding:34px clamp(20px,3vw,48px) 60px; }
+.hal-kepala { align-items:center; margin-bottom:22px; gap:16px; }
+.hal-kepala h2 { font-size:clamp(24px,2vw,30px);font-weight:900;letter-spacing:-.04em;color:var(--teks); }
+.hal-kepala .redup { margin-top:6px;display:block; }
+.panel {
+  border:1px solid rgba(24,53,65,.075); border-radius:19px;
+  box-shadow:0 4px 18px rgba(17,54,68,.045),0 18px 34px -28px rgba(17,54,68,.22);
+  padding:20px;
+}
+.panel h3 { font-size:15px;font-weight:850;letter-spacing:-.015em;margin-bottom:14px; }
+.order-grid { gap:20px; }
+.ringkas-order { border:1px solid rgba(8,127,140,.14); }
+.tombol { border-radius:12px;font-weight:800; }
+.tombol.utama { background:linear-gradient(120deg,#087f8c,#0c999c);border-color:#087f8c;box-shadow:0 7px 18px rgba(8,127,140,.2); }
+input:not([type=checkbox]):not([type=radio]),select,textarea { border-radius:11px; }
+.chip-baris { gap:9px;margin-bottom:17px; }
+.chip { border-radius:12px;min-height:42px;padding:0 15px;background:#fff;border-color:#e3ebef; }
+.chip.aktif { background:#087f8c;border-color:#087f8c;box-shadow:0 6px 15px rgba(8,127,140,.18); }
+.papan { gap:14px; }
+.kolom { background:rgba(229,239,242,.56);border:1px solid #e5edf0;border-radius:18px;padding:12px; }
+.kolom header { padding:5px 5px 13px; }
+.kartu-order { border:1px solid #e5edf0;border-left:4px solid var(--warna-s);border-radius:14px;box-shadow:0 4px 13px rgba(21,55,67,.05); }
+.kartu-order:hover { box-shadow:0 12px 25px rgba(21,55,67,.1); }
+.kartu-angka { gap:14px;margin-bottom:20px; }
+.angka { padding:19px;border:1px solid #e5edf0;border-radius:18px;box-shadow:0 4px 15px rgba(21,55,67,.045); }
+.angka small { font-size:12px;letter-spacing:.01em; }
+.angka b { font-size:clamp(20px,2vw,27px);font-weight:900;letter-spacing:-.045em; }
+.angka.sorot { background:linear-gradient(135deg,#087f8c,#0d9b9a);box-shadow:0 10px 22px rgba(8,127,140,.18); }
+.dua-kolom { gap:16px;margin-bottom:16px; }
+.grafik { min-height:175px; }
+.bawah { box-shadow:0 -8px 30px rgba(16,45,58,.1); }
+.watermark-fahri { opacity:.7; }
+@media(max-width:1100px) {
+  .app { grid-template-columns:220px minmax(0,1fr); }
+  .samping { width:220px; }
+  .papan { grid-template-columns:repeat(2,minmax(0,1fr)); }
+}
+@media(max-width:760px) {
+  .app { grid-template-columns:minmax(0,1fr); }
+  main { padding:22px 15px 104px; }
+  .samping { display:none; }
+  .hal-kepala { align-items:flex-start;flex-wrap:wrap; }
+  .hal-kepala .aksi { width:100%; }
+  .papan { grid-template-columns:minmax(0,1fr); }
+  .angka { padding:14px; }
+  .panel { padding:16px; }
+}
