@@ -11,7 +11,7 @@
  * doPost  : menyimpan/memperbarui order (JSON dari aplikasi kasir) ke sheet "Order".
  * doGet   : mengembalikan ringkasan (omzet, kg, belum diambil, piutang) untuk owner.html.
  */
-var KUNCI = 'ganti-kunci-rahasia'; // WAJIB diganti. Samakan dengan isian "Kunci rahasia" di aplikasi & owner.html.
+var KUNCI = 'Fahri31'; // WAJIB diganti. Samakan dengan isian "Kunci rahasia" di aplikasi & owner.html.
 var NAMA_SHEET = 'Order';
 var KOLOM = ['id', 'no', 'tanggal', 'pelanggan', 'wa', 'item', 'kg', 'paket', 'total', 'dibayar', 'sisa', 'status', 'estimasi', 'diambil', 'kasir', 'catatan', 'diperbarui', 'json'];
 var NAMA_STATUS = { diterima: 'Diterima', dicuci: 'Dicuci', disetrika: 'Disetrika', siap: 'Siap ambil', diambil: 'Diambil' };
