@@ -84,7 +84,7 @@
     var k = dataKosong();
     ['layanan', 'paket', 'parfum', 'pelanggan', 'order', 'kasir', 'sinkron'].forEach(function (f) { if (!D[f]) D[f] = k[f]; });
     Object.keys(k.sinkron).forEach(function (f) { if (D.sinkron[f] === undefined) D.sinkron[f] = k.sinkron[f]; });
-    // Hapus akun kasir bawaan Rina dari data lama. Akun kasir lain yang dibuat pengguna tetap dipertahankan.
+    // Hapus akun kasir bawaan akun kasir lama dari data lama. Akun kasir lain yang dibuat pengguna tetap dipertahankan.
     var jumlahKasirSebelum = D.kasir.length;
     D.kasir = D.kasir.filter(function (akun) { return !(akun.id === 'k2' && akun.nama === 'Rina'); });
     if (!D.kasir.length) D.kasir = k.kasir.slice();
