@@ -616,8 +616,15 @@
     var ids = s.antrian.slice(0, 200), data = ids.map(cariOrder).filter(Boolean).map(ringkasOrder);
     if (!ids.length) { if (manual) toast('Tidak ada yang perlu dikirim'); return Promise.resolve(true); }
     sedangKirim = true; statusSinkron('Mengirim ' + ids.length + ' order…');
-    return fetch(s.url, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify({ aksi: 'simpan', kunci: s.kunci, toko: D.toko.nama, order: data }) })
-      .then(function (r) { return r.json(); })
+    var payload = { aksi: 'simpan', kunci: s.kunci, toko: D.toko.nama, order: data };
+    // Gunakan Vercel serverless proxy agar request ke Apps Script tidak terblokir CORS browser.
+    return fetch('/api/sinkron', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ url: s.url, payload: payload }) })
+      .then(function (r) {
+        return r.json().catch(function () { return {}; }).then(function (j) {
+          if (!r.ok) throw new Error(j.pesan || ('HTTP ' + r.status));
+          return j;
+        });
+      })
       .then(function (j) {
         if (!j || !j.ok) throw new Error((j && j.pesan) || 'Balasan tidak dikenal');
         s.antrian = s.antrian.filter(function (id) { return ids.indexOf(id) < 0; });
