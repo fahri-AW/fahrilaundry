@@ -139,4 +139,4 @@ Kamu tidak perlu jago coding. Template ini sudah disiapkan supaya mudah diubah A
 - `app.js`: alamat dan nomor WhatsApp awal hanya nilai petunjuk. Ganti melalui menu Atur setelah login.
 - `apps-script/Code.gs`: `KUNCI`.
 - Menu **Atur → Sinkron Google Sheets**: URL Web App dan kunci.
-- PIN contoh Admin `1234` dan Rina `1111` wajib diganti sebelum aplikasi dipakai sungguhan.
+- PIN contoh Admin `1234` dan Admin `1111` wajib diganti sebelum aplikasi dipakai sungguhan.
