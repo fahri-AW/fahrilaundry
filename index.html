@@ -63,6 +63,12 @@
     <!-- ORDER BARU -->
     <section class="hal" id="hal-order">
       <header class="hal-kepala"><div><h2>Order baru</h2><span class="redup kecil" id="noBerikut"></span></div></header>
+      <section class="panel input-transaksi" aria-labelledby="judulInputTeks">
+        <div class="input-transaksi-heading"><div><span class="input-eyebrow">SMART INPUT</span><h3 id="judulInputTeks">Input transaksi dari teks</h3><p class="redup kecil">Tempel pesan pelanggan. Sistem mengenali layanan dan jumlah, lalu mengisi form untuk Anda periksa.</p></div><span class="input-spark" aria-hidden="true">✦</span></div>
+        <label for="inputTeksTransaksi">Pesan transaksi</label>
+        <textarea id="inputTeksTransaksi" rows="3" placeholder="Contoh: Nama: Bu Sari&#10;WA: 081234567890&#10;Cuci Setrika 3 kg&#10;Catatan: jangan pakai pemutih"></textarea>
+        <div class="input-transaksi-actions"><span class="redup kecil">Parser lokal, tidak perlu API key.</span><button type="button" class="tombol utama" id="btnAnalisisTeks">Analisis &amp; isi order</button></div>
+      </section>
       <form id="formOrder" class="order-grid" novalidate>
         <div class="order-kiri">
           <fieldset class="panel">
