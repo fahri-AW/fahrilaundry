@@ -506,3 +506,55 @@ input:not([type=checkbox]):not([type=radio]),select,textarea { border-radius:11p
     box-shadow:0 5px 13px rgba(99,54,165,.18);
   }
 }
+
+
+/* ---------- Ikon ungu dan tombol mode ---------- */
+.samping .nav:not(.aktif) svg,.bawah .nav:not(.aktif) svg,.ikon-btn svg{color:#8052bd}
+.samping .nav.aktif svg,.bawah .nav.aktif svg{color:#fff}
+.tombol-mode{position:fixed;top:12px;right:16px;z-index:35;display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:42px;padding:0 13px;border:1px solid #e5d8f7;border-radius:999px;background:rgba(255,255,255,.94);color:#6336a5;box-shadow:0 5px 18px rgba(57,35,91,.12);font:700 12px/1 var(--font);cursor:pointer;backdrop-filter:blur(12px)}
+.tombol-mode svg{width:17px;height:17px;stroke:currentColor;fill:none;stroke-width:1.8}
+.tombol-mode .ikon-mode-terang{display:none}
+[data-mode="gelap"] .tombol-mode{background:rgba(34,30,48,.94);border-color:#514267;color:#e6d5ff}
+[data-mode="gelap"] .tombol-mode .ikon-mode-gelap{display:none}
+[data-mode="gelap"] .tombol-mode .ikon-mode-terang{display:block}
+[data-mode="gelap"] body{background:#10131d;color:#edf0f8}
+[data-mode="gelap"] .samping{background:linear-gradient(165deg,#211a32 0%,#191629 48%,#141321 100%);color:#f0eafa;border-right:1px solid #39304b;--nav-teks:#f0eafa;--nav-redup:#b6a9cc;--nav-garis:rgba(224,205,255,.13);box-shadow:10px 0 34px rgba(0,0,0,.24)}
+[data-mode="gelap"] .samping .merek span{color:#f0eafa}
+[data-mode="gelap"] .samping .nav{color:#c2b5d8}
+[data-mode="gelap"] .samping .nav:hover{color:#fff;background:rgba(180,145,230,.13)}
+[data-mode="gelap"] .samping .nav.aktif{color:#fff;background:linear-gradient(110deg,#6336a5,#9870d8)}
+[data-mode="gelap"] .samping .pengguna{color:#e6ddf2}
+[data-mode="gelap"] .samping .pengguna .ikon-btn{color:#d1b8f5}
+[data-mode="gelap"] .bawah{background:linear-gradient(180deg,#211a32 0%,#191629 100%);border-top:1px solid #39304b;box-shadow:0 -8px 28px rgba(0,0,0,.3)}
+[data-mode="gelap"] .bawah .nav{color:#c2b5d8}
+[data-mode="gelap"] .bawah .nav:hover{color:#fff;background:rgba(180,145,230,.13)}
+[data-mode="gelap"] .bawah .nav.aktif{color:#fff;background:linear-gradient(110deg,#6336a5,#9870d8)}
+[data-mode="gelap"] .samping .nav:not(.aktif) svg,[data-mode="gelap"] .bawah .nav:not(.aktif) svg,[data-mode="gelap"] .ikon-btn svg{color:#c7a6f5}
+[data-mode="gelap"] .samping .nav.aktif svg,[data-mode="gelap"] .bawah .nav.aktif svg{color:#fff}
+[data-mode="gelap"] .panel,[data-mode="gelap"] .kolom,[data-mode="gelap"] .kartu-order,[data-mode="gelap"] .angka:not(.sorot),[data-mode="gelap"] .tabel-bungkus,[data-mode="gelap"] .pelanggan,[data-mode="gelap"] dialog,[data-mode="gelap"] .masuk-kartu{background:#1a1d2a;color:#edf0f8;border-color:#303447}
+[data-mode="gelap"] input:not([type=checkbox]):not([type=radio]),[data-mode="gelap"] select,[data-mode="gelap"] textarea{background:#141724;color:#edf0f8;border-color:#3a3e52}
+[data-mode="gelap"] table th{background:#222538;color:#e9e1f5}
+[data-mode="gelap"] table td{border-color:#303447}
+[data-mode="gelap"] .redup,[data-mode="gelap"] label{color:#b7b9ca}
+[data-mode="gelap"] .tombol:not(.utama):not(.bahaya):not(.wa){background:#242438;color:#eee8f8;border-color:#45405a}
+[data-mode="gelap"] .thumb{background:linear-gradient(145deg,#302541,#25243a)}
+[data-mode="gelap"] .masuk{background:#10131d}
+[data-mode="gelap"] .masuk-merek{background:#211a32;color:#f0eafa}
+[data-mode="gelap"] .masuk-kartu{box-shadow:0 18px 48px rgba(0,0,0,.28)}
+[data-mode="gelap"] .toast{background:#eee8f8;color:#251a37}
+[data-mode="gelap"] .watermark-fahri{background:rgba(26,29,42,.88);border-color:#4b3b65;color:#d0c5df}
+@media(max-width:760px){
+ .tombol-mode{top:9px;right:10px;min-height:40px;padding:0 11px}
+ main{padding-top:58px;padding-left:12px;padding-right:12px}
+ .hal-kepala{padding-right:76px}
+ .nav{touch-action:manipulation}
+ .bawah .nav{min-width:0;min-height:58px;gap:3px}
+ .bawah .nav svg{width:21px;height:21px}
+ input,select,textarea{font-size:16px}
+ .panel{padding:14px}
+ .aksi{flex-wrap:wrap}
+ .aksi>.tombol{flex:1 1 auto}
+ .tabel-bungkus{overflow-x:auto;-webkit-overflow-scrolling:touch}
+ .tabel-bungkus table{min-width:620px}
+}
+@media(max-width:380px){.bawah .nav{font-size:10px;padding-left:1px;padding-right:1px}.kartu-angka{gap:8px}.panel{padding:12px}}
