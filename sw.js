@@ -1,6 +1,6 @@
 /* Service worker: simpan semua berkas agar aplikasi jalan tanpa internet.
    Permintaan ke Google Apps Script (sinkron) TIDAK di-cache. */
-var CACHE = 'fahri-laundry-v5';
+var CACHE = 'fahri-laundry-v6';
 var BERKAS = ['./', './index.html', './owner.html', './style.css', './app.js', './manifest.webmanifest', './ikon.svg', './tema.css', './tema.js'];
 
 self.addEventListener('install', function (e) {
