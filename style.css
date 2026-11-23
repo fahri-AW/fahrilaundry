@@ -558,3 +558,82 @@ input:not([type=checkbox]):not([type=radio]),select,textarea { border-radius:11p
  .tabel-bungkus table{min-width:620px}
 }
 @media(max-width:380px){.bawah .nav{font-size:10px;padding-left:1px;padding-right:1px}.kartu-angka{gap:8px}.panel{padding:12px}}
+
+
+/* ---------- Brand refresh: Fahri Laundry purple studio ---------- */
+:root{
+  --tema-utama:#7045bd;
+  --tema-aksen:#b99bea;
+  --tema-latar:#f7f5fb;
+  --tema-panel:#fff;
+  --tema-nav:#29203d;
+  --tema-teks:#302744;
+  --bayang:0 5px 18px rgba(63,43,96,.06),0 16px 36px -24px rgba(83,52,137,.22);
+}
+body{background:radial-gradient(ellipse at 85% 0%,rgba(185,155,234,.13),transparent 34%),var(--latar)}
+.samping{background:linear-gradient(165deg,#fff 0%,#faf7ff 45%,#eee7ff 100%);border-right:1px solid #e9e0f5}
+.samping .merek{padding:5px 8px 22px}
+.samping .merek img{width:48px;height:48px;border-radius:16px;box-shadow:0 8px 20px rgba(86,54,143,.18)}
+.samping .merek span{color:#34264c;letter-spacing:-.025em}
+.samping .nav{min-height:50px;border-radius:14px}
+.samping .nav.aktif{background:linear-gradient(110deg,#6336a5 0%,#9870d8 100%);box-shadow:0 9px 22px rgba(99,54,165,.23)}
+.samping .nav:not(.aktif) svg,.bawah .nav:not(.aktif) svg{color:#8052bd}
+.samping .nav.aktif svg,.bawah .nav.aktif svg{color:#fff}
+.samping .nav:hover{background:linear-gradient(110deg,#fff,#f0e8ff);color:#6336a5}
+main{padding-top:38px}
+.hal-kepala{padding-bottom:4px}
+.hal-kepala h2{letter-spacing:-.045em}
+.panel{background:linear-gradient(150deg,#fff 0%,#fdfbff 100%);border:1px solid #eee8f7;box-shadow:0 7px 24px rgba(57,39,88,.045),0 20px 40px -32px rgba(57,39,88,.22)}
+.angka{background:linear-gradient(150deg,#fff 0%,#faf7ff 100%);border-color:#eee7f7}
+.angka.sorot{background:linear-gradient(135deg,#6336a5,#9870d8);border-color:#7045bd;box-shadow:0 12px 26px rgba(99,54,165,.22)}
+.tombol.utama,.chip.aktif{background:linear-gradient(120deg,#6336a5,#8e65cd);border-color:#7045bd;box-shadow:0 7px 18px rgba(99,54,165,.18)}
+.tombol.utama:hover,.chip.aktif:hover{background:linear-gradient(120deg,#542b91,#8053c2)}
+.chip{border-color:#e9e0f5;background:#fff}
+.chip.aktif{color:#fff}
+.kolom{background:linear-gradient(150deg,#f7f3fc,#f1edf8);border-color:#e9e0f5}
+.kartu-order{border-color:#ece5f4;box-shadow:0 5px 16px rgba(60,40,90,.055)}
+.kartu-order:hover{box-shadow:0 13px 28px rgba(60,40,90,.11);transform:translateY(-2px)}
+.kartu-layanan{border-color:#ece5f4;box-shadow:0 3px 12px rgba(60,40,90,.035)}
+.kartu-layanan:hover{box-shadow:0 10px 22px rgba(99,54,165,.12)}
+.thumb{background:linear-gradient(145deg,#f1e9ff,#e3d6fa)}
+.avatar{background:linear-gradient(135deg,#d8c4fb,#a985e4);color:#38215f}
+.input-transaksi{background:linear-gradient(135deg,#fff 0%,#f5efff 100%);border-color:#e7dcf7}
+.input-eyebrow{color:#7045bd}
+.input-spark{background:#eee5fb;color:#7045bd}
+.masuk{background:#f7f5fb}
+.masuk-merek{position:relative;overflow:hidden;background:radial-gradient(circle at 82% 18%,rgba(190,160,245,.28),transparent 28%),linear-gradient(145deg,#2b2040 0%,#4d3477 55%,#7045bd 100%)}
+.masuk-merek:after{content:"";position:absolute;width:360px;height:360px;right:-160px;bottom:-190px;border:1px solid rgba(255,255,255,.16);border-radius:50%;box-shadow:0 0 0 35px rgba(255,255,255,.035),0 0 0 75px rgba(255,255,255,.025)}
+.masuk-merek .merek img{width:54px;height:54px;border-radius:17px;box-shadow:0 10px 28px rgba(0,0,0,.22)}
+.masuk-merek .merek span{font-size:19px;letter-spacing:-.035em}
+.masuk-slogan{font-size:clamp(22px,2.4vw,30px);max-width:440px;letter-spacing:-.04em}
+.masuk-kartu{border:1px solid #eee7f7;border-radius:24px;padding:30px;box-shadow:0 24px 60px rgba(47,30,75,.12)}
+.masuk-kartu h1{letter-spacing:-.045em}
+.pilih-kasir .aktif{background:linear-gradient(120deg,#6336a5,#9870d8);border-color:#7045bd}
+.pad button{background:linear-gradient(145deg,#fff,#f6f1fc);border-color:#eee7f7}
+.pad button:hover{border-color:#b99bea;background:#f2eaff}
+.bawah{background:linear-gradient(180deg,#fff,#f4effb);border-top:1px solid #e9e0f5}
+.bawah .nav.aktif{background:linear-gradient(110deg,#6336a5,#9870d8);box-shadow:0 5px 13px rgba(99,54,165,.18)}
+.tombol-mode{border-color:#e5d8f7;color:#6336a5}
+.sinkron-chip.ok{color:#176b48;background:#e4f7ed}
+@media(max-width:760px){
+  .masuk{min-height:100svh}
+  .masuk-merek{min-height:210px;padding:28px 22px}
+  .masuk-ilus{max-width:100%}
+  .masuk-slogan{font-size:20px}
+  .masuk-form{padding:20px 14px 32px}
+  .masuk-kartu{max-width:440px;padding:24px 18px}
+  main{padding-top:58px}
+  .hal-kepala{margin-bottom:16px}
+  .angka{border-radius:16px}
+}
+[data-mode="gelap"] body{background:radial-gradient(ellipse at 85% 0%,rgba(112,69,189,.12),transparent 34%),#10131d}
+[data-mode="gelap"] .panel,[data-mode="gelap"] .angka:not(.sorot){background:linear-gradient(150deg,#1c1b2a,#191827);border-color:#343047}
+[data-mode="gelap"] .kolom{background:linear-gradient(150deg,#211d30,#191827);border-color:#383047}
+[data-mode="gelap"] .kartu-order,[data-mode="gelap"] .kartu-layanan{background:#1b1a29;border-color:#383047}
+[data-mode="gelap"] .samping{background:linear-gradient(165deg,#29203d,#1b1728);border-color:#39304b}
+[data-mode="gelap"] .samping .merek span{color:#f3ecff}
+[data-mode="gelap"] .masuk-merek{background:radial-gradient(circle at 82% 18%,rgba(190,160,245,.18),transparent 28%),linear-gradient(145deg,#21182f,#4d3477 65%,#7045bd)}
+[data-mode="gelap"] .masuk-kartu{background:#1b1a29;border-color:#383047}
+[data-mode="gelap"] .pad button{background:#242136;border-color:#403650}
+[data-mode="gelap"] .bawah{background:linear-gradient(180deg,#211a32,#191629);border-color:#39304b}
+[data-mode="gelap"] .input-transaksi{background:linear-gradient(135deg,#211d30,#191827);border-color:#403650}
