@@ -1,4 +1,3 @@
-/* kredit-maliki: Template oleh Maliki Saputra (@malikisaputra) — https://malikisaputra.biz.id. Lisensi Nonkomersial Maliki Studio: wajib kredit, dilarang dijual (lihat LICENSE). */
 /* Kasir Laundry — tampilan "papan cucian bersih" (lihat DESIGN.md).
    Brand diatur di tema.css. Semua warna lain diturunkan lewat color-mix. Teks di atas --tema-utama & nav
    dihitung otomatis dari luminansi (hitungTeksBagian di app.js). */
@@ -58,8 +57,6 @@ code{font-size:.9em;background:var(--utama-muda);padding:1px 5px;border-radius:6
 .teks-bahaya{color:var(--bahaya)} .teks-ok{color:var(--ok)}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 :focus-visible{outline:2.5px solid var(--utama);outline-offset:2px}
-.kredit-maliki{text-align:center;font:12px/1.5 system-ui,sans-serif;opacity:.75;margin:0}
-.kredit-maliki a{color:inherit}
 .kredit-atas{padding:4px 16px;background:var(--nav);color:var(--nav-teks)}
 .kredit-bawah{margin:24px auto 100px;padding:0 16px}
 
