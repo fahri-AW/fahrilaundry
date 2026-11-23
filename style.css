@@ -464,3 +464,45 @@ input:not([type=checkbox]):not([type=radio]),select,textarea { border-radius:11p
   .input-transaksi-actions { align-items:stretch;flex-direction:column; }
   .input-transaksi-actions .tombol { width:100%; }
 }
+
+
+/* ---------- Menu putih gradasi ---------- */
+.samping {
+  background:linear-gradient(165deg,#ffffff 0%,#fbfdff 42%,#edf5f7 100%);
+  color:#183541;
+  --nav-teks:#183541;
+  --nav-redup:#647985;
+  --nav-garis:rgba(23,59,58,.12);
+  border-right:1px solid #e5edef;
+  box-shadow:10px 0 34px rgba(25,63,72,.055);
+}
+.samping .merek span { color:#183541; }
+.samping .merek img { box-shadow:0 5px 15px rgba(23,59,58,.12); }
+.samping .nav { color:#607681; }
+.samping .nav:hover {
+  color:#176b68;
+  background:linear-gradient(110deg,#ffffff 0%,#eaf6f3 100%);
+  transform:translateX(2px);
+}
+.samping .nav.aktif {
+  color:#ffffff;
+  background:linear-gradient(110deg,#176b68 0%,#4da99b 100%);
+  box-shadow:0 7px 17px rgba(23,107,104,.19);
+}
+.samping .pengguna { border-top-color:rgba(23,59,58,.12);color:#29464d; }
+.samping .pengguna .ikon-btn { color:#526b74; }
+.samping .sinkron-chip { color:#48636c; }
+@media(max-width:760px) {
+  .bawah {
+    background:linear-gradient(180deg,#ffffff 0%,#fbfdff 58%,#edf5f7 100%);
+    border-top:1px solid #e3ecee;
+    box-shadow:0 -8px 28px rgba(25,63,72,.08);
+  }
+  .bawah .nav { color:#657a83; }
+  .bawah .nav:hover { color:#176b68;background:#eaf6f3; }
+  .bawah .nav.aktif {
+    color:#ffffff;
+    background:linear-gradient(110deg,#176b68 0%,#4da99b 100%);
+    box-shadow:0 5px 13px rgba(23,107,104,.16);
+  }
+}
