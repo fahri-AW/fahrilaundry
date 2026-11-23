@@ -1,11 +1,11 @@
 /* TEMA BRAND — palet navy, teal, dan mint */
 :root {
-  --tema-utama: #087f8c;
-  --tema-aksen: #55d6be;
+  --tema-utama: #176B68;
+  --tema-aksen: #77C9B8;
   --tema-radius: 16px;
   --tema-font: "Plus Jakarta Sans", system-ui, sans-serif;
-  --tema-latar: #f1f7f8;
+  --tema-latar: #F2F7F5;
   --tema-panel: #ffffff;
-  --tema-nav: #102d3a;
-  --tema-teks: #142f3a;
+  --tema-nav: #173B3A;
+  --tema-teks: #183331;
 }
