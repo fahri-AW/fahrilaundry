@@ -53,7 +53,6 @@ kasir-laundry/
 ├─ app.js                semua logika (satu IIFE)
 ├─ owner.html            dasbor owner read-only (ambil ringkasan dari Web App)
 ├─ apps-script/Code.gs   doPost simpan order, doGet ringkasan
-├─ tema.css / tema.js    warna, font, nama usaha (customizer Maliki Studio)
 ├─ sw.js                 cache offline (PWA)
 ├─ manifest.webmanifest, ikon.svg
 ├─ AGENTS.md, DESIGN.md, .claude/skills/ubah-kasir-laundry/SKILL.md
@@ -67,16 +66,13 @@ kasir-laundry/
 
 ## Ubah pakai Claude
 - **Claude Code / Claude Desktop**: buka folder paket ini, skill `.claude/skills/ubah-kasir-laundry` terbaca otomatis.
-- **claude.ai**: unggah ZIP skill (tombol "Unduh Skill" di malikisaputra.biz.id/kode) lewat Customize › Skills › tombol "+" › Create skill › Upload a skill (folder skill sebagai akar ZIP). Syarat: "Code execution and file creation" aktif di Settings › Capabilities (Free/Pro/Max); di Team/Enterprise diatur Owner. Sumber: support.claude.com/en/articles/12512180 (dicek 6 Nov 2026).
 
 ## Mau hasil lebih maksimal?
 - **impeccable** — https://github.com/pbakaus/impeccable (Apache-2.0, dicek 6 Nov 2026)
 - **ui-ux-pro-max** — https://github.com/nextlevelbuilder/ui-ux-pro-max-skill (MIT menurut GitHub API, dicek 6 Nov 2026)
 
 ## Lisensi & kredit
-Lisensi Nonkomersial Maliki Studio (kredit wajib, dilarang dijual) (lihat `LICENSE`). Dibuat oleh Maliki Studio — malikisaputra.biz.id, follow TikTok/IG @malikisaputra.
 
-<!-- panduan-ai-maliki -->
 ## Ubah sendiri sesuai kebutuhanmu pakai AI
 
 Kamu tidak perlu jago coding. Template ini sudah disiapkan supaya mudah diubah AI: ada **AGENTS.md** (aturan proyek untuk AI), **DESIGN.md** (gaya desain), dan skill Claude di folder `.claude/skills/`. Pilih salah satu cara di bawah.
@@ -115,16 +111,13 @@ Kamu tidak perlu jago coding. Template ini sudah disiapkan supaya mudah diubah A
 - Simpan salinan folder asli sebelum mengubah, jadi bisa balik kalau ada yang rusak.
 - Kalau ada error, salin pesan errornya (klik kanan > Inspect > Console) lalu tempel ke AI.
 - Data aplikasi tersimpan di browser (localStorage). Backup dulu sebelum ganti versi.
-- Jangan hapus kredit "Template oleh @malikisaputra", dan template ini **tidak boleh diperjualbelikan** tanpa izin. Mau menjual atau kerja sama? Diskusikan dulu dengan kreatornya (@malikisaputra).
 
-Masih bingung? Komen di TikTok/IG **@malikisaputra**, nanti aku bantu.
 
 
 ## Kustomisasi identitas Fahri Akbar Wiguna
 - Nama aplikasi dan nama toko utama: ubah `window.TEMA.nama` di `tema.js`.
 - Warna aplikasi: ubah variabel `--tema-utama`, `--tema-aksen`, `--tema-nav`, dan `--tema-latar` di `tema.css`.
 - Watermark pemilik "Fahri Akbar Wiguna" sudah ditambahkan pada halaman kasir dan dasbor owner.
-- Kredit pembuat template Maliki Saputra tetap ditampilkan karena diwajibkan oleh berkas `LICENSE`. Template ini hanya boleh digunakan untuk kebutuhan pribadi/operasional sendiri dan tidak boleh dijual atau diklaim sebagai karya buatan sendiri.
 
 ## Agar seluruh data masuk ke akun Google milik Anda
 1. Login ke akun Google yang akan menjadi pemilik data.
