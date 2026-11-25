@@ -1,5 +1,5 @@
 # AGENTS.md — Kasir Laundry
-Panduan lengkap: `.claude/skills/ubah-kasir-laundry/SKILL.md` (baca dulu sebelum mengubah apa pun).
+Ikuti panduan ini dan DESIGN.md sebelum mengubah kode. Jangan menganggap file skill eksternal tersedia jika tidak ada di repository.
 
 - Statis: `index.html`, `style.css`, `app.js` (satu IIFE), `owner.html` (dasbor read-only), `sw.js` (offline), tanpa build tool.
 - Sinkron opsional: `apps-script/Code.gs` (doPost simpan order, doGet ringkasan). Di app: `antri()`, `kirim()`, `ringkasOrder()`, `statusSinkron()`. Kolom sheet = `KOLOM` di Code.gs = kunci objek `ringkasOrder()`; ubah keduanya bersamaan.
@@ -8,6 +8,9 @@ Panduan lengkap: `.claude/skills/ubah-kasir-laundry/SKILL.md` (baca dulu sebelum
 - Halaman: `.nav[data-hal]` + `section#hal-…` + `buka()`. Status alur = array `STATUS`.
 - Berkas baru → `sw.js` (`BERKAS`, naikkan `CACHE`) dan `meta.json` (`berkas`).
 - Desain: baca `DESIGN.md`. Jaga token tema, aksesibilitas (AA, fokus, ≥44px, reduced-motion) dan responsif 390px–1280px; uji terang & gelap, konsol bersih.
+- Anti-slop: jangan menambah dekorasi atau fitur tanpa tujuan pengguna. Semua kontrol harus bekerja, semua state loading/error/empty/success ditangani, dan perubahan harus menjaga alur transaksi.
+- Keamanan: jangan commit kredensial nyata. Gunakan placeholder aman untuk rahasia, validasi input di server, dan jangan klaim localStorage sebagai database multi-perangkat.
+- Verifikasi: jalankan pemeriksaan sintaks dan uji alur yang relevan jika lingkungan memungkinkan. Laporkan PASS/FAIL/NOT VERIFIED secara jujur.
 
 ## Kredit (jangan dihapus)
 
