@@ -5,6 +5,7 @@
 <script>
 (function () {
   var m = (window.TEMA && TEMA.mode) || 'terang';
+  try { m = localStorage.getItem('fahri-laundry-mode') || m; } catch (e) {}
   if (m === 'auto') m = matchMedia('(prefers-color-scheme: dark)').matches ? 'gelap' : 'terang';
   document.documentElement.setAttribute('data-mode', m);
 })();
@@ -15,6 +16,7 @@
 <title>Fahri Akbar Wiguna Laundry | Dasbor Owner</title>
 <meta name="description" content="Dasbor owner Fahri Akbar Wiguna Laundry untuk memantau omzet, order, status cucian, dan piutang.">
 <meta name="theme-color" content="#7045bd">
+<meta name="color-scheme" content="light dark">
 <link rel="icon" href="ikon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
