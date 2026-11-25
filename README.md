@@ -2,8 +2,6 @@
 
 Aplikasi kasir untuk usaha laundry kiloan & satuan. Jalan di browser HP, tablet, atau laptop, bisa di-install (PWA), dan tetap jalan tanpa internet. Kalau mau, order bisa dikirim ke Google Sheets lewat Google Apps Script supaya owner bisa cek dari luar kota lewat `owner.html`.
 
-Dibuat atas request penonton **@okfian_ari**. Turunan dari Kasir Fotocopy / Kasir UMKM.
-
 > **Jujur dulu:** tanpa URL Web App, semua data tetap **offline** di browser perangkat kasir (localStorage). Owner baru bisa memantau dari jauh setelah kamu memasang `apps-script/Code.gs` dan mengisi URL-nya di menu **Atur**. Ini bukan aplikasi multi-perangkat penuh: tiap HP kasir punya datanya sendiri, Google Sheets hanya menjadi salinan untuk dipantau.
 
 ## Fitur
@@ -22,13 +20,13 @@ Dibuat atas request penonton **@okfian_ari**. Turunan dari Kasir Fotocopy / Kasi
 1. Ekstrak ZIP. Coba dulu: buka `index.html` di Chrome (dobel klik). Untuk demo tanpa login: `index.html?demo` (data contoh, tidak disimpan).
 2. Supaya bisa di-install dan jalan offline, unggah folder ke hosting HTTPS gratis (GitHub Pages / Netlify Drop).
 3. Buka alamatnya di HP kasir → menu browser → **Install aplikasi / Tambahkan ke layar utama**.
-4. Masuk sebagai **Admin (PIN 1234)**. Di menu **Atur**: ganti nama laundry, alamat, harga layanan, paket, lalu tambah kasir dan ganti PIN contoh.
+4. Masuk menggunakan PIN Admin yang saat ini tersimpan pada data perangkat. PIN bawaan proyek adalah `1234`, sehingga wajib diganti sebelum aplikasi dipakai sungguhan. Di menu **Atur**: ganti nama laundry, alamat, harga layanan, paket, lalu tambah kasir.
 5. Mulai terima cucian dari menu **Order**.
 
 ## Sinkron ke Google Sheets + dasbor owner (opsional)
 1. Buka [sheets.new](https://sheets.new) (Google Sheet baru), beri nama mis. "Laundry – Order".
 2. Menu **Ekstensi → Apps Script**. Hapus isi `Code.gs` bawaan, tempel isi `apps-script/Code.gs` dari paket ini.
-3. Ganti baris `var KUNCI = 'ganti-kunci-rahasia';` dengan kata rahasia sendiri (mis. `laundry-wangi-2026`). Simpan.
+3. Ganti baris `var KUNCI = 'GANTI_DENGAN_KUNCI_RAHASIA_PANJANG';` dengan rahasia acak minimal 32 karakter. Jangan gunakan nama toko, tanggal, PIN, atau contoh yang mudah ditebak. Script menolak sinkronisasi jika nilai bawaan belum diganti. Simpan.
 4. (Opsional) pilih fungsi `setup` lalu **Jalankan**, beri izin akses ke Sheet. Sheet "Order" akan dibuat.
 5. Klik **Terapkan (Deploy) → Deployment baru** → ikon roda → **Aplikasi web**.
    - Jalankan sebagai: **Saya**
@@ -139,4 +137,4 @@ Kamu tidak perlu jago coding. Template ini sudah disiapkan supaya mudah diubah A
 - `app.js`: alamat dan nomor WhatsApp awal hanya nilai petunjuk. Ganti melalui menu Atur setelah login.
 - `apps-script/Code.gs`: `KUNCI`.
 - Menu **Atur → Sinkron Google Sheets**: URL Web App dan kunci.
-- PIN contoh Admin `1234` dan Admin `1111` wajib diganti sebelum aplikasi dipakai sungguhan.
+- PIN bawaan Admin `1234` wajib diganti sebelum aplikasi dipakai sungguhan. Jangan membagikan perangkat kasir yang masih memakai PIN bawaan.
