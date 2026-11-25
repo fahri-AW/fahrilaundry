@@ -10,7 +10,7 @@
  * doPost  : menyimpan/memperbarui order (JSON dari aplikasi kasir) ke sheet "Order".
  * doGet   : mengembalikan ringkasan (omzet, kg, belum diambil, piutang) untuk owner.html.
  */
-var KUNCI = 'Fahri31'; // WAJIB diganti. Samakan dengan isian "Kunci rahasia" di aplikasi & owner.html.
+var KUNCI = 'GANTI_DENGAN_KUNCI_RAHASIA_PANJANG'; // WAJIB diganti sebelum deploy. Gunakan rahasia acak minimal 32 karakter.
 var NAMA_SHEET = 'Order';
 var KOLOM = ['id', 'no', 'tanggal', 'pelanggan', 'wa', 'item', 'kg', 'paket', 'total', 'dibayar', 'sisa', 'status', 'estimasi', 'diambil', 'kasir', 'catatan', 'diperbarui', 'json'];
 var NAMA_STATUS = { diterima: 'Diterima', dicuci: 'Dicuci', disetrika: 'Disetrika', siap: 'Siap ambil', diambil: 'Diambil' };
@@ -36,7 +36,12 @@ function setup() {
   ambilSheet_();
 }
 
+function kunciSiap_() {
+  return KUNCI && KUNCI !== 'GANTI_DENGAN_KUNCI_RAHASIA_PANJANG' && KUNCI.length >= 32;
+}
+
 function doPost(e) {
+  if (!kunciSiap_()) return balas_({ ok: false, pesan: 'Konfigurasi keamanan belum selesai. Atur KUNCI unik minimal 32 karakter.' });
   var data;
   try { data = JSON.parse(e.postData.contents); } catch (er) { return balas_({ ok: false, pesan: 'JSON tidak valid' }); }
   if (!data || data.kunci !== KUNCI) return balas_({ ok: false, pesan: 'Kunci salah' });
@@ -65,6 +70,7 @@ function doPost(e) {
 }
 
 function doGet(e) {
+  if (!kunciSiap_()) return balas_({ ok: false, pesan: 'Konfigurasi keamanan belum selesai. Atur KUNCI unik minimal 32 karakter.' });
   var p = (e && e.parameter) || {};
   if (p.kunci !== KUNCI) return balas_({ ok: false, pesan: 'Kunci salah' });
   var sh = ambilSheet_();
