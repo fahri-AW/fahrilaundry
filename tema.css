@@ -1,11 +1,11 @@
-/* TEMA BRAND — palet navy, teal, dan mint */
+/* Identitas visual Fahri Laundry. Satu sumber token untuk seluruh halaman. */
 :root {
-  --tema-utama: #176B68;
-  --tema-aksen: #77C9B8;
-  --tema-radius: 16px;
+  --tema-utama: #7045bd;
+  --tema-aksen: #b99bea;
+  --tema-radius: 14px;
   --tema-font: "Plus Jakarta Sans", system-ui, sans-serif;
-  --tema-latar: #F2F7F5;
+  --tema-latar: #f7f5fb;
   --tema-panel: #ffffff;
-  --tema-nav: #173B3A;
-  --tema-teks: #183331;
+  --tema-nav: #29203d;
+  --tema-teks: #302744;
 }
