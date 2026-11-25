@@ -35,20 +35,43 @@
   .tabel-owner td:last-child,.tabel-owner th:last-child{text-align:right}
   @media (max-width:760px){.status-st{grid-template-columns:repeat(3,1fr)}}
 
-/* Owner dashboard refresh */
-.owner { max-width:1280px;padding:30px clamp(16px,3vw,40px) 48px; }
-.owner-kepala { padding:18px 21px;background:#29203d;color:#fff;border-radius:16px;box-shadow:0 6px 18px rgba(53,37,81,.12);margin-bottom:20px; }
-.owner-kepala .merek span { color:#fff;font-weight:900; }
-.owner-kepala .redup { color:#c6d9df; }
+/* Owner dashboard: memakai token tema yang sama dengan kasir. */
+.owner { max-width:1280px; padding:clamp(18px,3vw,36px) clamp(14px,3vw,40px) 48px; }
+.owner-kepala {
+  padding:18px 22px; background:var(--nav); color:var(--nav-teks);
+  border:1px solid var(--nav-garis); border-radius:var(--r-besar);
+  box-shadow:var(--bayang); margin-bottom:20px;
+}
+.owner-kepala .merek span { color:var(--nav-teks); font-weight:800; }
+.owner-kepala .redup { color:var(--nav-redup); }
 .owner .form { margin-bottom:20px; }
-.owner #isi { display:grid;gap:18px; }
+.owner #isi { display:grid; gap:18px; }
 .owner #isi>.dua-kolom { margin:0; }
-.owner .status-st div { background:#f0f6f7;border:1px solid #e1ecef;border-radius:14px; }
-.owner .status-st b { color:#087f8c;font-size:28px; }
+.owner .status-st div {
+  background:var(--utama-muda); border:1px solid var(--garis);
+  border-radius:var(--r-kecil); min-width:0;
+}
+.owner .status-st b { color:var(--utama-teks); font-size:clamp(22px,2vw,28px); }
+.owner .status-st small { color:var(--redup); }
 .owner .tabel-owner th { padding:13px 12px; }
 .owner .tabel-owner td { padding:12px; }
-.owner .panel { border-radius:20px; }
-@media(max-width:760px) { .owner{padding:16px 12px 30px}.owner-kepala{padding:15px;border-radius:16px}.owner .status-st{grid-template-columns:repeat(2,1fr)} }
+.owner .panel { border-radius:var(--r-besar); }
+.owner .aksi { align-items:center; }
+.owner .aksi .tombol { white-space:normal; }
+.owner :focus-visible { outline-offset:3px; }
+@media(max-width:760px) {
+  .owner { padding:16px 12px 30px; }
+  .owner-kepala { padding:15px; }
+  .owner .status-st { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .owner .dua { grid-template-columns:1fr; }
+  .owner .tabel-bungkus { overflow-x:auto; }
+}
+@media(prefers-reduced-motion:reduce) {
+  .owner *, .owner *::before, .owner *::after {
+    animation-duration:.01ms!important; animation-iteration-count:1!important;
+    scroll-behavior:auto!important;
+  }
+}
 
 </style>
 </head>
