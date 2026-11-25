@@ -1,34 +1,36 @@
-# DESIGN — Kasir Laundry
+# DESIGN — Fahri Laundry
 
-Arah: "papan cucian bersih". Latar biru-aqua sangat muda, rel navigasi teal tua, kartu putih bersudut lembut. Pusat aplikasi adalah papan status bergaya kanban: tiap kolom punya titik warna dan garis kiri kartu sesuai tahap, sehingga kasir langsung tahu cucian ada di mana. Ilustrasi SVG buatan sendiri (mesin cuci, keranjang baju, setrika, bed cover, jas, sepatu, karpet) memakai warna tema.
+## Arah desain
+Antarmuka operasional laundry yang tenang, jelas, dan cepat dipindai. Prioritas utama adalah input order, pemantauan status cucian, dan pencatatan pembayaran. Hindari dekorasi yang tidak membantu pekerjaan kasir.
 
-## Token (tema.css)
-| Token | Bawaan | Dipakai untuk |
-|---|---|---|
-| `--tema-utama` | `#0b6e80` | tombol utama, nav aktif, chip filter aktif, kolom "Siap ambil", kartu angka sorot, batang hari ini |
-| `--tema-aksen` | `#3cc6d6` | kolom "Dicuci", batang grafik, badge paket, avatar, ilustrasi |
-| `--tema-radius` | `14px` | kartu & tombol (`--r-besar` = +6px, `--r-kecil` = ×0.7) |
-| `--tema-font` | Nunito | semua teks, angka tabular |
-| `--tema-latar/panel/nav/teks` | `#eef6f8 / #fff / #0c3a45 / #0f2a32` | bagian customizer |
+## Token visual
+- Utama: ungu `#7045bd` untuk aksi utama dan navigasi aktif.
+- Aksen: lavender `#b99bea` untuk ilustrasi dan penanda sekunder.
+- Latar: `#f7f5fb`; panel: putih; teks: `#302744`.
+- Mode gelap memakai permukaan gelap netral dengan kontras teks tinggi.
+- Tipografi: Plus Jakarta Sans, angka memakai tabular numerals.
+- Radius komponen 10–16px. Bayangan ringan dan seperlunya.
 
-Turunan di `style.css`: `--utama-tua`, `--utama-muda`, `--utama-teks`, `--aksen-tua`, `--aksen-muda`, `--redup`, `--garis`, `--garis-kuat`, warna status `--s-diterima … --s-diambil` (semua dari tema), `--bahaya`, `--ok`. Mode gelap mengganti latar/panel/teks/nav. Teks di atas utama & nav dihitung JS (`--tema-utama-teks`, `--tema-nav-teks`). Kontras bawaan: putih di atas `#0b6e80` ≈ 5,9:1 (AA).
+## Prioritas layout
+- Desktop: sidebar 236px, area kerja lebar dengan batas maksimum 1600px.
+- Tablet: sidebar 210px, papan status dua kolom.
+- Ponsel: navigasi bawah, papan satu kolom, form order satu kolom, ringkasan total mengikuti alur konten.
+- Tombol dan target sentuh minimal 44px. Input ponsel minimal 16px untuk mencegah zoom otomatis.
 
-## Tipografi
-Judul halaman 26px/800 (22px di HP). Total order 30px/800. Angka laporan 24px/800. Nama kartu 15px/700, label 13–13.5px/700.
+## Komponen utama
+- Papan status: kolom berdasarkan tahap kerja, kartu order ringkas, status dan estimasi mudah dibaca.
+- Order baru: input teks opsional, form pelanggan, layanan, paket, catatan, dan ringkasan biaya.
+- Laporan: metrik utama, grafik harian, daftar cucian belum diambil dan piutang.
+- Owner: ringkasan baca-saja dari sinkronisasi Google Sheets.
 
-## Komponen
-- **Rel navigasi** 104px (HP: nav bawah 5 ikon). Chip status sinkron (Offline saja / Antri n / Tersinkron / Gagal) di bawah menu.
-- **Papan status**: chip filter + jumlah, 4 kolom aktif (2 kolom di ≤1180px, 1 di HP), kartu order: nama, badge paket, isi item, estimasi (merah bila lewat), Sisa/Lunas, tombol "maju" 44px di bawah kartu.
-- **Order baru**: kartu layanan bergambar → baris item dengan input berat desimal (`inputmode=decimal`, koma diterima), segmen paket, ringkasan lengket di kanan (subtotal, paket, total, DP, Lunas/Bayar nanti, metode, sisa).
-- **Dialog detail**: alur 5 titik, rincian, catatan, aksi (maju, pelunasan, cetak, WA nota, WA siap ambil, hapus admin).
-- **Laporan**: 5 kartu angka, grafik batang kg & omzet per hari, daftar belum diambil & piutang.
-- **owner.html**: kartu sumber data, kartu angka, status cucian, grafik 14 hari, tabel belum diambil.
+## Aksesibilitas dan gerak
+- Fokus keyboard terlihat jelas.
+- Warna bukan satu-satunya penanda status.
+- Kontras teks dan latar harus memadai.
+- `prefers-reduced-motion` dihormati.
+- Hindari animasi berulang yang tidak menyampaikan perubahan status.
 
-## Motion
-Halaman naik 10px saat ganti tab; kartu muncul bertahap 35ms (`munculPop`, pegas `cubic-bezier(.34,1.4,.64,1)`); kartu terangkat saat hover; panah "maju" bergeser; air di mesin cuci bergoyang, uap setrika naik; dialog naik dengan pegas + backdrop blur; batang grafik tumbuh; PIN salah bergoyang. Semua mati di `prefers-reduced-motion`.
-
-## Aksesibilitas
-Target ≥44px (PIN 60px, nav 56–60px), fokus terlihat 2.5px utama, semua input berlabel, tombol ikon ber-`aria-label`, `aria-current` di nav, `aria-pressed` di chip filter, ringkasan order `aria-live`. Tidak ada scroll horizontal di 390px (tabel harga menggulung di dalam bingkainya).
-
-## Kredit (jangan dihapus)
-
+## Batasan produk
+- `localStorage` tetap penyimpanan lokal perangkat. Tampilan tidak boleh memberi kesan bahwa data otomatis tersedia lintas perangkat.
+- Input transaksi teks adalah parser lokal berbasis aturan, bukan AI generatif.
+- Sinkronisasi Google Sheets bersifat opsional dan perlu konfigurasi pengguna.
